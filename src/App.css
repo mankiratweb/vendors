@@ -7,6 +7,37 @@
   pointer-events: none;
 }
 
+
+
+.nav-bar-wrapper a{
+
+  color: white;
+  padding-left: 20px;
+  text-decoration: none;
+}
+
+.nav-bar-wrapper a:hover{
+
+color: rgb(230, 10, 94);
+font-weight: 800;
+
+}
+
+
+.form{
+
+margin: auto;
+  width: 40%;
+} 
+
+
+
+
+
+
+
+
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
