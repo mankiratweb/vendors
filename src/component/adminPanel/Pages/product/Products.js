@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import Header from '../component/Header';
-import Sidebar from '../component/Sidebar'; 
+import Header from '../../common/Header';
+import Sidebar from '../../common/Sidebar'; 
 import {Table , Button} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 
@@ -58,7 +58,7 @@ async function getData(){
                             <li className="breadcrumb-item"><Link to="/">Dashboard</Link></li>
                             <li className="breadcrumb-item active">Products</li>
                          
-                            <li  style={{marginLeft:40}} ><Link to="/add">Add </Link></li>
+                            <li  className="breadcrumb-item active"   ><Link to="/add">Add </Link></li>
                         </ol>
                        
                      

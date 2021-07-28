@@ -1,10 +1,9 @@
-import Header from '../component/Header';
-
-import Sidebar from '../component/Sidebar'; 
+import Header from '../common/Header'
+import Sidebar from '../common/Sidebar'; 
 import { Table  , Button } from 'react-bootstrap'
 import { Link} from 'react-router-dom';
 
-function Orders(){
+function Contacts(){
 
 
     return(
@@ -17,10 +16,10 @@ function Orders(){
 <div id="layoutSidenav_content">
                 <main>
                     <div className="container-fluid px-4">
-                        <h1 className="mt-4">Order</h1>
+                        <h1 className="mt-4">Contact</h1>
                         <ol className="breadcrumb mb-4">
                             <li className="breadcrumb-item"><Link to="/">Dashboard</Link></li>
-                            <li className="breadcrumb-item active">Order</li>
+                            <li className="breadcrumb-item active">Contact</li>
                         </ol>
                         <div className="card mb-4">
                             <div className="card-body">
@@ -32,17 +31,18 @@ function Orders(){
                         <div className="card mb-4">
                             <div className="card-header">
                                 <i className="fas fa-table me-1"></i>
-                            Orders
+                         Contact List
                             </div>
                             <div className="card-body">
                             <Table striped bordered hover size="sm">
   <thead>
     <tr>
-      <th>sno</th>
-      <th>Order</th>
-      <th>Price</th>
+      <th>Sno</th>
+      <th>Name</th>
       <th>Email</th>
-      <th>Status</th>
+      <th>Mobile</th>
+      
+      <th>Messeage</th>
       <th>Date</th>
       <th>Action</th>
     </tr>
@@ -52,6 +52,7 @@ function Orders(){
       <td>1</td>
       <td>Mark</td>
       <td>Otto</td>
+      
       <td>@mdo</td>
       <td>@mdo</td>
       <td>@mdo</td>
@@ -88,10 +89,11 @@ function Orders(){
 </div>
 
 
+
         </>
 
     )
 }
 
 
-export default Orders
+export default Contacts

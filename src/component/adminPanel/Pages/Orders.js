@@ -1,26 +1,26 @@
-import Header from '../component/Header';
-import Sidebar from '../component/Sidebar'; 
-import '../theme_asset/css/styles.css'
+import Header from '../common/Header';
+
+import Sidebar from '../common/Sidebar'; 
 import { Table  , Button } from 'react-bootstrap'
 import { Link} from 'react-router-dom';
- 
-function Users(){
+
+function Orders(){
 
 
     return(
         <>
         <Header />
         
-          <div id="layoutSidenav">
+        <div id="layoutSidenav">
 <Sidebar />
 
 <div id="layoutSidenav_content">
                 <main>
                     <div className="container-fluid px-4">
-                        <h1 className="mt-4">Users</h1>
+                        <h1 className="mt-4">Order</h1>
                         <ol className="breadcrumb mb-4">
                             <li className="breadcrumb-item"><Link to="/">Dashboard</Link></li>
-                            <li className="breadcrumb-item active">User</li>
+                            <li className="breadcrumb-item active">Order</li>
                         </ol>
                         <div className="card mb-4">
                             <div className="card-body">
@@ -32,16 +32,16 @@ function Users(){
                         <div className="card mb-4">
                             <div className="card-header">
                                 <i className="fas fa-table me-1"></i>
-                             User List
+                            Orders
                             </div>
                             <div className="card-body">
                             <Table striped bordered hover size="sm">
   <thead>
     <tr>
-      <th>Sno</th>
-      <th>Name</th>
+      <th>sno</th>
+      <th>Order</th>
+      <th>Price</th>
       <th>Email</th>
-      
       <th>Status</th>
       <th>Date</th>
       <th>Action</th>
@@ -52,7 +52,7 @@ function Users(){
       <td>1</td>
       <td>Mark</td>
       <td>Otto</td>
-      
+      <td>@mdo</td>
       <td>@mdo</td>
       <td>@mdo</td>
       <td>
@@ -88,11 +88,10 @@ function Users(){
 </div>
 
 
-
         </>
 
     )
 }
 
 
-export default Users
+export default Orders

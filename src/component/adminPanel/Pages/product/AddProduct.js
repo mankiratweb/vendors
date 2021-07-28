@@ -1,7 +1,7 @@
-import Header from '../component/Header';
+import Header from '../../common/Header'
  
 import { Form , Button    } from 'react-bootstrap';
-import Sidebar from '../component/Sidebar'; 
+import Sidebar from '../../common/Sidebar'; 
 import { useState } from 'react';
 import { useHistory} from 'react-router-dom'
 

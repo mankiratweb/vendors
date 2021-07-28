@@ -1,27 +1,22 @@
 import {  BrowserRouter, Route , Switch } from 'react-router-dom';
  
 import Login from './login/Login';
-
-
-
-
-
-import Logout from './login/Logout';
+ 
 import Register from './login/Register';
-import AddProduct from './product/AddProduct';
-import  UpdateProduct from './product/UpdateProduct';
-import Products from './product/Products';
+import AddProduct from './Pages/product/AddProduct';
+import  UpdateProduct from './Pages/product/UpdateProduct';
+import Products from './Pages/product/Products';
 import Protected from './login/Protected';
-import Orders from './ecomm/Orders';
-import Contacts from './ecomm/Contact'
-import Users from './ecomm/Users';
-import './App.css';
+import Orders from './Pages/Orders';
+import Contacts from './Pages/Contact'
+import Users from './Pages/Users';
+import '../../App.css';
 import './theme_asset/css/styles.css'
-import Dashboard from './component/Dashboard';
+import Dashboard from './Pages/Dashboard';
  
  
 
-function App() {
+function Home() {
   return (
     <div className="App">
         
@@ -31,7 +26,7 @@ function App() {
 
    
       <Route path="/login"><Login /></Route>
-      <Route path="/logout"><Logout /></Route>
+      
       
       <Route path="/register"><Register /></Route>
       <Route exact path="/"><Protected Cmp= {Dashboard} /></Route>
@@ -49,4 +44,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;

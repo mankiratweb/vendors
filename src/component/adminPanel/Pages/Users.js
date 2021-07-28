@@ -1,25 +1,26 @@
-import Header from '../component/Header';
-import Sidebar from '../component/Sidebar'; 
+import Header from '../common/Header';
+import Sidebar from '../common/Sidebar'; 
+import '../theme_asset/css/styles.css'
 import { Table  , Button } from 'react-bootstrap'
 import { Link} from 'react-router-dom';
-
-function Contacts(){
+ 
+function Users(){
 
 
     return(
         <>
         <Header />
         
-        <div id="layoutSidenav">
+          <div id="layoutSidenav">
 <Sidebar />
 
 <div id="layoutSidenav_content">
                 <main>
                     <div className="container-fluid px-4">
-                        <h1 className="mt-4">Contact</h1>
+                        <h1 className="mt-4">Users</h1>
                         <ol className="breadcrumb mb-4">
                             <li className="breadcrumb-item"><Link to="/">Dashboard</Link></li>
-                            <li className="breadcrumb-item active">Contact</li>
+                            <li className="breadcrumb-item active">User</li>
                         </ol>
                         <div className="card mb-4">
                             <div className="card-body">
@@ -31,7 +32,7 @@ function Contacts(){
                         <div className="card mb-4">
                             <div className="card-header">
                                 <i className="fas fa-table me-1"></i>
-                         Contact List
+                             User List
                             </div>
                             <div className="card-body">
                             <Table striped bordered hover size="sm">
@@ -40,9 +41,8 @@ function Contacts(){
       <th>Sno</th>
       <th>Name</th>
       <th>Email</th>
-      <th>Mobile</th>
       
-      <th>Messeage</th>
+      <th>Status</th>
       <th>Date</th>
       <th>Action</th>
     </tr>
@@ -53,7 +53,6 @@ function Contacts(){
       <td>Mark</td>
       <td>Otto</td>
       
-      <td>@mdo</td>
       <td>@mdo</td>
       <td>@mdo</td>
       <td>
@@ -96,4 +95,4 @@ function Contacts(){
 }
 
 
-export default Contacts
+export default Users
