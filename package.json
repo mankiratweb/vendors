@@ -1,6 +1,5 @@
 {
   "name": "ecomm-dashboard",
-  "homepage": "http://mankiratweb.com/multivendor",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -11,7 +10,6 @@
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
     "bootstrap": "^5.0.2",
-    "gh-pages": "^3.2.3",
     "multiselect-react-dropdown": "^2.0.5",
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.0-beta.4",
@@ -29,8 +27,6 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
