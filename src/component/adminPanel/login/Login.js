@@ -5,14 +5,14 @@ import {Link, useHistory} from 'react-router-dom';
 
 function Login(){
     
-    const history= useHistory();
+    let history= useHistory();
     useEffect(()=> {
         if(localStorage.getItem('user-info'))
         {
            history.push('/'); 
         }
     
-    }, []);
+    },);
     const [email , setEmail]= useState("");
     const [password , setPassword] = useState("");
     const [errorlog , setErrorLog] = useState("");

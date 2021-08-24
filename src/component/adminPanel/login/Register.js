@@ -11,7 +11,7 @@ function Register(){
     const [email,setEmail]= useState("");
     const [password,setPass]= useState("");
     const [cpass,setCpass]= useState("");
-    const history= useHistory();
+    let history= useHistory();
 
 
 
@@ -27,7 +27,7 @@ useEffect(()=> {
        history.push('/'); 
     }
 
-}, []);
+}, );
 
 
 

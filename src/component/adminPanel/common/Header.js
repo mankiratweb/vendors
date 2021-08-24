@@ -12,12 +12,12 @@ function Header(){
 
 
 
-  if(localStorage.getItem('user-info')){
-    user = JSON.parse(localStorage.getItem('user-info'));
-    name = user.name;
-  }else{
-    name = "User Name";
-  }
+  // if(localStorage.getItem('user-info')){
+  //   user = JSON.parse(localStorage.getItem('user-info'));
+  
+  // }else{
+  //   name = "User Name";
+  // }
 
 
 

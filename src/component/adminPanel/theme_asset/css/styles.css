@@ -11292,3 +11292,53 @@ a{
   text-decoration: none;
   color:red;
 }
+
+ 
+.ip{
+  height: 50px;
+}
+
+
+.error{
+  color:red
+}
+
+.pro-add{
+  margin: auto;
+  width: 90%;
+ 
+}
+
+.pro-add input{
+ 
+}
+.pro-form{
+  width: 98%;
+}
+
+.inv-pro input{
+height: 80%;
+
+}
+
+
+.publish-btn{
+ width: 100%;
+  padding: auto !important;
+
+}
+.preview-btn{
+margin-right: -70%;
+}
+
+ 
+
+ .overText label{
+   overflow:hidden;
+   width: 90px;
+   display: inline-block;
+   white-space: nowrap;
+   vertical-align: super;
+   text-align: start;
+
+ }

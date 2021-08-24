@@ -1,0 +1,422 @@
+import Header from '../../common/Header'; 
+import { Form , Button } from 'react-bootstrap';
+import Sidebar from '../../common/Sidebar'; 
+import { useState , useEffect } from 'react';
+import { useHistory} from 'react-router-dom'
+
+function AddProduct(){
+
+const history = useHistory();
+const [name , setName] = useState("");
+const [price , setPrice] = useState("");
+const [cat , setCat] = useState("");
+const [subCat , setSubCat] = useState("");
+const [image , setImage] = useState("");
+const [tag , setTag] = useState("");
+const [sku , setSku] = useState("");
+const [shortDesc , setShortDesc] = useState("");
+const [longDesc , setLongDesc] = useState("");
+ const [status , setStatus] = useState("");
+ const [qty , setQty] = useState("");
+ const [proViewType , setProViewType] = useState("");
+ const [stock , setStock] = useState("");
+const user = JSON.parse(localStorage.getItem('user-info'));
+let [subCatData , setSubCatData] = useState([]);
+let [catData , setCatData] = useState([]);
+let [tagData , setTagData] = useState([]);
+const [error , setError] = useState("");
+ 
+ 
+
+ 
+useEffect( ()=>{
+    
+ 
+  allCat();
+  allTags()
+
+},[])
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+ 
+
+async function  allCat(){
+  let result  = await fetch("http://127.0.0.1:8000/api/allcat");
+result = await result.json();
+setCatData(result);
+
+
+}
+
+
+async function  allTags(){
+  let result  = await fetch("http://127.0.0.1:8000/api/alltags");
+result = await result.json();
+setTagData(result);
+console.log(result)
+
+
+}
+
+
+
+// alert(cat)
+
+async function subCatFun(){
+  
+  if(cat=='' || cat=='0'){
+    setError("Please Select Category");
+  }else{
+    setError('');
+    let result  = await fetch("http://127.0.0.1:8000/api/findsubcatpro/"+cat);
+    result = await result.json();
+    setSubCatData(result);
+console.warn(result);
+  
+
+
+
+
+  }
+}
+ 
+
+
+ 
+
+async function productAdd(){
+ 
+    // console.warn(name,price,cat,subCat,longDesc , shortDesc , image , status , sku , tag );
+    // alert(error) 
+ const formData  = new FormData();
+ if(name==""){
+setError("Plese Enter Your Name");
+ }
+else{
+  formData.append('name',name);
+  setError("");
+  }
+
+ if(price==""){
+  setError("Plese Enter Product Price")
+   }
+else{
+    formData.append('price',price);
+    
+   }
+  
+   if(cat==""){
+    setError("Please Select One  Category")
+     }
+     else{
+      formData.append('cat',cat);
+       
+     }
+     
+     if(qty==""){
+      setError("Plese Enter Product Qty")
+       }
+       else{
+        formData.append('qty',qty);
+         
+       }
+     if(stock=="1" || stock=="0" ){
+       formData.append('stock',stock);
+       
+       }
+       else{
+         setError("Please Select Stock Status")
+       }
+     if(proViewType=="f" || proViewType=="t" || proViewType=="d" ){
+       formData.append('pro_view_type',proViewType);
+       
+       }
+       else{
+         setError("Please Select Product View Type")
+       }
+ 
+    if(subCat=="" || subCat=='0'){
+    setSubCat("uncategory");
+   
+       } 
+     else{
+        formData.append('sub_cat',subCat);
+       }
+       
+       
+if(longDesc==""){
+         setLongDesc("")
+         
+        }
+
+else{
+
+          formData.append('long_desc',longDesc);
+
+        }
+        
+       if(shortDesc==""){
+          setError("Please Enter Short Description");
+        }
+else{
+          
+          formData.append('short_desc',shortDesc);
+          
+        }
+        
+        if(image==""){
+          setError("Please Upload Product Image")
+        }
+        
+       else{
+          
+          formData.append('image',image);
+         
+        }
+        
+      if(sku==""){
+          setError("Please Enter SkU")
+        }
+ else{
+          
+          formData.append('sku',sku);
+         
+        }
+        
+     if(status=="1" || status=='0'){
+      formData.append('status',status);
+        
+        }else{
+          setError("Please Select Status");
+        }
+        
+        
+       
+        if(tag==""){
+          setTag("")
+        }else{
+          formData.append('tag',tag);
+        }
+
+        formData.append('user_id',user);
+     
+        
+        
+        
+        
+        if(user!="" && status!="" && qty!="" && stock!="" && proViewType!="" && name!="" && price!="" && cat!="" && image!="" && sku!="" && shortDesc!=""){
+          let result = await fetch("http://127.0.0.1:8000/api/addproducts",{
+            
+            method:'POST',
+            
+            body: formData
+          });
+          
+          
+          result =await  result.json();
+          
+          if(result.result[0]=="Insert"){
+            history.push('/pro');
+          }
+          
+          
+        }
+        
+        
+        
+        
+
+
+
+}
+
+
+
+
+
+
+
+    return(
+        <>
+        <Header />
+        
+          <div id="layoutSidenav">
+<Sidebar />
+
+    <div id="layoutSidenav_content">
+                    <main>
+                        
+
+
+
+
+
+  <h1>Product Details</h1>
+                         <Form>
+  <Form.Group className="mb-3 form-pro"  controlId="formBasicEmail">
+
+    <Form.Control type="text" value={name}  onChange={((e)=>setName(e.target.value))} placeholder="Product Name" />
+    <span className="error">{error=="Plese Enter Your Name"? error :null}</span>
+    <br />
+
+    <Form.Control type='number' min="0"  value={price}  onChange={((e)=>setPrice(e.target.value))} placeholder=" Price" />
+    <span className="error"> {error=="Plese Enter Product Price"? error :null}</span>
+    
+    <br />
+    <Form.Control type='number' min="1"  value={qty}  onChange={((e)=>setQty(e.target.value))} placeholder="Qty" />``
+    <span className="error"> {error=="Plese Enter Product Qty"? error :null}</span>
+    
+    <br />
+    <Form.Control type="number" min="0" value={sku}  onChange={((e)=>setSku(e.target.value))}  placeholder="Sku" />
+    <span className="error">{error=="Please Enter SkU"? error :null}</span>
+    <br />
+    
+
+
+    <Form.Control type="file"    onChange={((e)=>setImage(e.target.files[0]))} placeholder="Image" />
+    
+    <span className="error"> {error=="Please Upload Product Image"? error :null}</span>
+    
+    <br />
+  
+    <Form.Select value={cat}   onChange={((e)=>setCat(e.target.value))} >
+    <option value='0'>Select Category</option>
+{
+  
+  catData.map((item , key)=>
+  
+<option value={item.id}  key ={key}>{item.cat_name}</option>
+
+)
+
+}
+
+  </Form.Select>
+
+   
+
+  <span className="error">{error=="Please Select One Category"? error :null}</span>
+      
+  <br />
+ 
+   <Form.Select value={subCat}   onClick={subCatFun} onChange={((e)=>setSubCat(e.target.value))}>
+    <option value='0'>Sub Category Select</option>
+    
+    {
+      
+      subCatData.map((item , key)=>
+      
+      item.cat_id==cat? <option value={item.id}  >{item.name}</option>:
+      null
+      
+      )
+      
+}
+
++
+     
+  </Form.Select>
+      <span className="error">{error=="Please Select Category" ? error :null}</span>
+      <br />
+    <Form.Select value={tag}  onChange={((e)=>setTag(e.target.value))} >
+    <option >Tag Select</option>
+     {
+       tagData.map((item , key)=>
+       <option key={key} value={item.id}>{item.name}</option>
+
+       )
+
+     }
+     
+  </Form.Select><br />
+    <Form.Select value={stock}  onChange={((e)=>setStock(e.target.value))} >
+    <option>Select Stock</option>
+    <option value="1"> In of Stock   </option>
+    <option value="0">Out of Stock</option>
+  </Form.Select>
+<span className="error"> {error=="Please Select Stock Status"? error :null}</span>
+  <br />
+
+ 
+    <Form.Select value={proViewType}  onChange={((e)=>setProViewType(e.target.value))} >
+    <option> Select Type</option>
+    <option value="f">  Feature Product </option>
+    <option value="t"> Top Product</option>
+    <option value="d"> Default Product </option>
+  </Form.Select>
+    <span className="error"> {error=="Please Select Product View Type"? error :null} </span>
+    <br />
+    <Form.Control value={shortDesc}  onChange={((e)=>setShortDesc(e.target.value))} placeholder="Short Desciption"  as="textarea" rows={3} />
+    
+    <span className="error"> {error=="Please Enter Short Description"? error :null} </span>
+    
+    
+    <br />
+    <Form.Control as="textarea" placeholder="Long Description"  value={longDesc}  onChange={((e)=>setLongDesc(e.target.value))} rows={5} /><br />
+    
+    <Form.Select value={status}  onChange={((e)=>setStatus(e.target.value))}>
+     
+     <option >Select status</option>
+    <option value="1">Active</option>
+    <option value ="0" >Deactive</option>
+    
+  </Form.Select> 
+    <span className="error"> {error=="Please Select Status"? error :null} </span>
+    <br />
+    <div className="d-grid gap-2">
+  <Button variant="primary" onClick={productAdd} size="lg">
+    Publish
+  </Button>
+  
+</div>
+
+  </Form.Group>
+
+ 
+  
+</Form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                       
+                    </main>
+                    
+                </div>
+ 
+
+</div>
+
+
+
+        </>
+
+    )
+}
+
+
+export default AddProduct
