@@ -32,7 +32,7 @@ function Home() {
     <div className="App">
         
      
-      <BrowserRouter>
+      <BrowserRouter basename="/admin">
        <Switch>
 
    
