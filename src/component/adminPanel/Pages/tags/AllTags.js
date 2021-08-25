@@ -6,16 +6,28 @@ import {Table, Button} from 'react-bootstrap';
  
 import {useSelector , useDispatch} from 'react-redux';
 import {deleteSingleTag, getAllTagAc, statusChangeTagButon} from '../../../../Services/Actions/TagAction'
+import { LiveTvOutlined } from '@material-ui/icons';
 
 function AllTags() {
 const dispatch = useDispatch()
 const tagsSel = useSelector((state) => state.TagRaducer.tagsData);
  
+ let [user,setUser] =useState(localStorage.getItem('user-info')); 
+
+ useEffect(() => {
+  if(localStorage.getItem('user-info')!=='undefined'){
+    
+     const StorageUser = JSON.parse(user);
+setUser(StorageUser)
+     
+ console.warn('user 2',user.id)
+   }
+ }, [localStorage.getItem('user-info')])
  
 
 
-   
-    const user = JSON.parse(localStorage.getItem('user-info'));
+ 
+
 
 
 
@@ -33,21 +45,30 @@ const tagsSel = useSelector((state) => state.TagRaducer.tagsData);
 
 
   function deleteTag(id){
+ if(user.id){
  
-
   dispatch(deleteSingleTag(id,user.id))
  
     dispatch(getAllTagAc());  
+ }
+
+
  
 
 }
 
   function statusChange(id){
+console.warn('userId',user.id)
+console.warn('user',user)
+    if(user.id!=='undefined'){
+      console.warn('userId',user.id)
+      console.warn("status",dispatch(statusChangeTagButon(id,user.id)));
+dispatch(getAllTagAc());
+     }
 
     
 
-console.warn("status",dispatch(statusChangeTagButon(id,user.id)));
-dispatch(getAllTagAc());
+
  
 
     
