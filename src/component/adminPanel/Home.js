@@ -1,4 +1,4 @@
-import {  BrowserRouter, Route , Switch } from 'react-router-dom';
+import { HashRouter, Route , Switch } from 'react-router-dom';
  
 import Login from './login/Login';
  
@@ -32,7 +32,7 @@ function Home() {
     <div className="App">
         
      
-      <BrowserRouter basename="/admin">
+      <HashRouter basename="/dashboard">
        <Switch>
 
    
@@ -67,7 +67,7 @@ function Home() {
       <Route path="/updatetag/:id"><Protected Cmp= {UpdateTag} /></Route>
   
       </Switch>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }

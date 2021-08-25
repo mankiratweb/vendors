@@ -55,7 +55,10 @@ function ListCategories() {
 
 
     async function getData() {
-        let result = await fetch("http://127.0.0.1:8000/api/allcat");
+        let result = await fetch("http://127.0.0.1:8000/api/allcat",{
+            headers:{'Access-Control-Allow-Origin': '*',
+        }
+        });
         result = await result.json();
         setData(result);
 

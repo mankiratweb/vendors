@@ -6,7 +6,7 @@ function Login(props){
     
     useEffect(()=>{
         if(!localStorage.getItem('user-info')){
-            history.push('/login');
+            // history.push('https://react-ecommerce-7947d.firebaseapp.com/login');
         }  
     });
     let Cmp = props.Cmp 

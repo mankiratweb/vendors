@@ -81,8 +81,7 @@ export default (state = initialState, { type, payload, msg }) => {
 
             }
             else {
-                return {
-                    subError: msg
+                return {  subError: msg
                 }
             }
         

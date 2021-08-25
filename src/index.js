@@ -11,7 +11,11 @@ import store from './store';
 console.warn("StoreCheck",store)
 ReactDOM.render(
  <Provider store={store}>
-    <App />
+    <React.StrictMode>
+
+<App />
+    </React.StrictMode>
+
     </Provider>,
   document.getElementById('root')
 );
