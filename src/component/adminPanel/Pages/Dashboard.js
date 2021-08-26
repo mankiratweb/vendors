@@ -1,6 +1,7 @@
 import Sidebar from '../common/Sidebar';
+ 
 import Header from '../common/Header';
-
+import '../theme_asset/js/scripts'
 
 
 function Dashboard(){
@@ -22,7 +23,7 @@ function Dashboard(){
                                 <li className="breadcrumb-item active">Dashboard</li>
                             </ol>
                             <div className="row">
-                                <div className="col-xl-3 col-md-6">
+                                <div className="col-xl-3  col-md-6">
                                     <div className="card bg-primary text-white mb-4">
                                         <div className="card-body">Primary Card</div>
                                         <div className="card-footer d-flex align-items-center justify-content-between">
@@ -79,40 +80,10 @@ function Dashboard(){
                                     </div>
                                 </div>
                             </div>
-                            <div className="card mb-4">
-                                <div className="card-header">
-                                    <i className="fas fa-table me-1"></i>
-                                    DataTable Example
-                                </div>
-                                <div className="card-body">
-                                    <table id="datatablesSimple">
-                                        <thead>
-                                            <tr>
-                                                <td>Donna Snider</td>
-                                                <td>Customer Support</td>
-                                                <td>New York</td>
-                                                <td>27</td>
-                                                <td>2011/01/25</td>
-                                                <td>$112,000</td>
-                                            </tr>
-                                        </thead>
-                                    </table>
-                                </div>
-                            </div>
+                            
                         </div>
                     </main>
-                    <footer className="py-4 bg-light mt-auto">
-                        <div className="container-fluid px-4">
-                            <div className="d-flex align-items-center justify-content-between small">
-                                <div className="text-muted">Copyright &copy; Your Website 2021</div>
-                                <div>
-                                    <a href="#">Privacy Policy</a>
-                                    &middot;
-                                    <a href="#">Terms &amp; Conditions</a>
-                                </div>
-                            </div>
-                        </div>
-                    </footer>
+                    
                 </div>
  
 

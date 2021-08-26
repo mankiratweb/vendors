@@ -3,7 +3,7 @@ import Header from '../../common/Header';
 import Sidebar from '../../common/Sidebar';
 import {Form , Button} from 'react-bootstrap';
 import { useState  } from 'react';
- import {useHistory} from 'react-router-dom';
+ import {Link, useHistory} from 'react-router-dom';
 import { createSubCatAc , } from '../../../../Services/Actions/SubCatAction';
 import {useDispatch,useSelector} from 'react-redux'
   
@@ -78,7 +78,7 @@ formData.append('user_id',user.id);
 
 
 
-if(catId!=='' && catId!=0 && user.id!='' && name!=='' && status!=''){
+if(catId!=='' && catId!=0 && 1!='' && name!=='' && status!=''){
 
   dispatch(createSubCatAc(formData));
 
@@ -132,10 +132,14 @@ useEffect(() => {
                     {error!='' && error!='Please Enter Sub Category Name' &&  error!='Please Select Category'?<div className="alert alert-danger" role="alert">
   {error}
 </div>:null}
-                         <h1 className="mt-5" >Add Sub Category</h1>
+                          
 
+<ol className="breadcrumb m-4">
+                                <li className="breadcrumb-item"><Link to="/">Dashboard</Link></li>
+                                <li className="breadcrumb-item active"> <Link to="allsubcat"> Sub Categories </Link> </li>
 
-
+                                <li className="breadcrumb-item active"   >Add </li>
+                            </ol>
 
 
 
@@ -186,7 +190,7 @@ data.map((item)=>
     
     <div className="d-grid gap-2">
   <Button variant="primary" onClick={subCatAdd} size="lg">
-    Add Sub Category
+  Publish
   </Button>
   
 </div>

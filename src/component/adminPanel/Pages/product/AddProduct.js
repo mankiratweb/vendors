@@ -214,7 +214,7 @@ function setNameFun(e){
       formData.append('new_cat_name', newCat);
       setNewCat(null);
       formData.append('status', 1);
-      formData.append('user_id', user.id);
+      formData.append('user_id', 1);
 
 
       let result = await fetch("http://127.0.0.1:8000/api/addcat", {
@@ -259,7 +259,7 @@ function setNameFun(e){
 
     if (cat != '' && newSubCat != '') {
 
-      formData.append('user_id', user.id);
+      formData.append('user_id', 1);
       formData.append('cat_id', cat);
       formData.append('status', 1);
 
@@ -400,7 +400,7 @@ setError("Please Enter Your Tag Name");
 
     if (newtag != '' && cat) {
       
-      formData.append('user_id', user.id);
+      formData.append('user_id', 1);
       formData.append('name', newtag);
       formData.append('cat_id', cat);
 
@@ -492,7 +492,7 @@ formData.append("gallery[]",itm)
 
 
 )
-formData.append("user_id",user.id);
+formData.append("user_id",1);
 
 let result = await fetch("http://127.0.0.1:8000/api/addgallery",{
   method: 'POST',
@@ -522,7 +522,7 @@ async function imageFun(e){
 
 const formData = new FormData();
 
-formData.append('user_id',user.id);
+formData.append('user_id',1);
  
 
 setImage(e.target.files[0]);
@@ -851,7 +851,7 @@ formData.append('gallery_id','')
 
 
 
-    formData.append('user_id', user.id);
+    formData.append('user_id', 1);
 
 
 

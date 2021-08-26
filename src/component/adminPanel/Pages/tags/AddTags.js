@@ -3,7 +3,7 @@ import Header from '../../common/Header';
 import Sidebar from '../../common/Sidebar';
 import {Form , Button} from 'react-bootstrap';
 import { useState } from 'react';
- import {useHistory} from 'react-router-dom';
+ import {Link, useHistory} from 'react-router-dom';
 import { useDispatch,useSelector } from 'react-redux';
 import { createTagAc } from '../../../../Services/Actions/TagAction';
 
@@ -77,7 +77,7 @@ useEffect( async() => {
     formData.append('user_id',user.id);
     console.warn("FormData",formData)
 
-    if(catId!=='' && user.id!='' && name!=='' && status==1 || status==0){
+    if(catId!=='' && 1!='' && name!=='' && status==1 || status==0){
 
 
 dispatch(createTagAc(formData));
@@ -131,8 +131,26 @@ history.push('/alltags');
   {error}
 </div>:null}
                     <main>
-                         <h1 className="mt-5" >Tag Add</h1>
-                        <Form className="mb-3 mt-5 form-pro">
+
+
+
+                    <ol className="breadcrumb m-4">
+                                <li className="breadcrumb-item"><Link to="/">Dashboard</Link></li>
+                                <li className="breadcrumb-item active"> <Link to="alltags"> Tags</Link> </li>
+
+                                <li className="breadcrumb-item active"   > <Link to="addtags">Add</Link> </li>
+                            </ol>
+
+
+
+
+
+
+
+
+
+
+                             <Form className="mb-3 mt-5 form-pro">
   
   <Form.Select value={catId}  onChange={((e)=>setCatId(e.target.value))} >
 <option value="0">Select Category</option>

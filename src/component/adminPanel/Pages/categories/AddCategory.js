@@ -3,7 +3,7 @@ import Header from '../../common/Header'
 import { Form , Button    } from 'react-bootstrap';
 import Sidebar from '../../common/Sidebar'; 
 import { useState } from 'react';
-import { useHistory} from 'react-router-dom'
+import { useHistory ,Link} from 'react-router-dom'
 
 
 function AddCategory(){
@@ -71,16 +71,20 @@ history.push('/allcat');
 
     <div id="layoutSidenav_content">
                     <main>
-                         <h1 className="mt-5" >Add Category</h1>
+                        
+                         <ol className="breadcrumb mb-4 mt-3">
+                                <li className="breadcrumb-item"><Link to="/">Dashboard</Link></li>
+                                <li className="breadcrumb-item active"> <Link to="/allcat">Categories</Link> </li>
+
+                                <li className="breadcrumb-item active"   >Add </li>
+                            </ol>
 
 
 
-
-
-                         <Form>
-  <Form.Group className="mb-3 form-pro"   controlId="formBasicEmail">
+                         <Form >
+  <Form.Group className="mb-3 form-pro h-200"   controlId="formBasicEmail">
      
-    <Form.Control type="text"   value={name} className="mt-5 p-3 ip"  onChange={((e)=>setName(e.target.value))} placeholder="Category Name" />
+    <Form.Control type="text"   value={name} className="mt-5 p-3 ip w-100"  onChange={((e)=>setName(e.target.value))} placeholder="Category Name" />
     
     <span className="error"> { error=="Please Enter Your Category Name" ? error : null } </span>
 

@@ -13,6 +13,7 @@
     "bootstrap": "^5.0.2",
     "cors": "^2.8.5",
     "gh-pages": "^3.2.3",
+    "jQuery": "^1.7.4",
     "multiselect-react-dropdown": "^2.0.5",
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.0-beta.4",

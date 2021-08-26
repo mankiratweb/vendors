@@ -214,7 +214,7 @@ if(stock==""){
   
 }
 
-formData.append('user_id',user.id);
+formData.append('user_id',1);
 console.warn(formData)
 
   let result = await fetch("http://127.0.0.1:8000/api/productupdate/"+id+"?_method=PUT",{

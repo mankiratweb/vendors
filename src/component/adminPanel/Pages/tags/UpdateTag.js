@@ -3,7 +3,7 @@ import Header from '../../common/Header';
 import Sidebar from '../../common/Sidebar';
 import {Form , Button} from 'react-bootstrap';
 import { useState } from 'react';
- import {useHistory, withRouter} from 'react-router-dom';
+ import {Link, useHistory, withRouter} from 'react-router-dom';
 import { useDispatch ,useSelector } from 'react-redux';
 import axios from "axios";
 import { findSingleTag, updatedTag } from '../../../../Services/Actions/TagAction';
@@ -84,7 +84,7 @@ async  function tagupdate(){
         }
       
    
-  dispatch(updatedTag(formData,id,user.id));
+  dispatch(updatedTag(formData,id,1));
  
  
   
@@ -124,8 +124,14 @@ useEffect(() => {
 </div>:null}
 
                     <main>
-                         <h1 className="mt-5" >Tag Update</h1>
-      
+                         
+
+                    <ol className="breadcrumb m-4">
+                                <li className="breadcrumb-item"><Link to="/">Dashboard</Link></li>
+                                <li className="breadcrumb-item active"> <Link to="/alltags"> Tags </Link> </li>
+
+                                <li className="breadcrumb-item active"   >Update </li>
+                            </ol>
                          <Form className="mb-3 mt-5 form-pro">
   
   <Form.Select value={catId}  onChange={((e)=>setCatId(e.target.value))} >
@@ -202,7 +208,7 @@ TagState.cat_name!=item.cat_name? <option key={key}  value={item.id}>{item.cat_n
     
     <div className="d-grid gap-2">
   <Button variant="primary" onClick={tagupdate} size="lg">
-    Publish
+ Update
   </Button>
   
 </div>

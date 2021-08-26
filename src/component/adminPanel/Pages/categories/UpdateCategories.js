@@ -1,5 +1,6 @@
 import Header from '../../common/Header';
-import { withRouter , useHistory } from 'react-router';
+import { withRouter , useHistory ,  } from 'react-router';
+import { Link } from 'react-router-dom';
 import { Form , Button , Figure    } from 'react-bootstrap';
 import Sidebar from '../../common/Sidebar'; 
 import { useEffect, useState  } from 'react';
@@ -146,7 +147,12 @@ else{
 
     <div id="layoutSidenav_content">
                     <main>
-                         <h1>Update  Category</h1>
+                    <ol className="breadcrumb mb-4 mt-3">
+                                <li className="breadcrumb-item"><Link to="/">Dashboard</Link></li>
+                                <li className="breadcrumb-item active"> <Link to="/allcat">Categories</Link> </li>
+
+                                <li className="breadcrumb-item active"   >Update </li>
+                            </ol>
 
 
 

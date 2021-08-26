@@ -12,10 +12,10 @@ function Login(){
            history.push('/'); 
         }
     
-    },);
-    const [email , setEmail]= useState("");
-    const [password , setPassword] = useState("");
-    const [errorlog , setErrorLog] = useState("");
+    },[]);
+    let [email , setEmail]= useState("");
+    let [password , setPassword] = useState("");
+    let [errorlog , setErrorLog] = useState("");
 
 
 
@@ -25,9 +25,22 @@ async function loginForm(){
     console.log(email , password)
     
 
+if(email===''){
+    setErrorLog("Please Enter Your email")
+}else{
+    setErrorLog('')
+}if(password==''){
+setErrorLog("Please Enter Your Password")
+}else{
+    setErrorLog('')
+}
+
+
+
 let item = {email,password}
 
-let result = await fetch("http://127.0.0.1:8000/api/login ",{
+if(email!=''&& password!=''){
+    let result = await fetch("http://127.0.0.1:8000/api/login ",{
     method : "POST",
     headers :{
 "Content-Type" : "application/json",
@@ -36,23 +49,30 @@ let result = await fetch("http://127.0.0.1:8000/api/login ",{
     body: JSON.stringify(item)
 });
 result = await result.json();
-console.warn("result",result.error); 
+console.warn("result",result.error[0]); 
 
- if(JSON.stringify(result.error[0]==="Incorrect Email"))
+ if(result.error[0]==="Incorrect Email")
 {
     setErrorLog("Incorrect Email ");
 }
 
-if(JSON.stringify(result.error[0]==="Incorrect Password") )
+if(result.error[0]==="Incorrect Password") 
 {
     setErrorLog("Incorrect  Password");
 }
  
-if (JSON.stringify(result.error[0]==="Not error")) {
+if (result.error[0]==="login") {
+    
+  const  data={
+id:result.data.id,
+name:result.data.name,
+email:result.data.email,
+role:result.data.role,
+    }
 
-    localStorage.setItem("user-info",JSON.stringify(result.data));
+    localStorage.setItem("user-info",JSON.stringify(data));
 
-history.push("/");
+// history.push("/");
 
 }
 
@@ -70,6 +90,7 @@ history.push("/");
 
 
 
+}
 
 }
 

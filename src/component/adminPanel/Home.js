@@ -11,7 +11,8 @@ import Orders from './Pages/Orders';
 import Contacts from './Pages/Contact'
 import Users from './Pages/Users';
 import '../../App.css';
-import './theme_asset/css/styles.css'
+import './theme_asset/css/styles.css';
+import '../adminPanel/theme_asset/js/scripts';
 import Dashboard from './Pages/Dashboard';
 import AddCategory from './Pages/categories/AddCategory';
  import ListCategories  from './Pages/categories/ListCategories';

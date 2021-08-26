@@ -2,7 +2,7 @@ import React , {useEffect ,useState} from 'react';
 import Header from '../../common/Header';
 import Sidebar from '../../common/Sidebar';
 import {Table, Button} from 'react-bootstrap';
- import { Link, withRouter} from 'react-router-dom';
+import { Link, withRouter} from 'react-router-dom';
  
 import {useSelector , useDispatch} from 'react-redux';
 import {deleteSingleTag, getAllTagAc, statusChangeTagButon} from '../../../../Services/Actions/TagAction'
@@ -11,22 +11,10 @@ import { LiveTvOutlined } from '@material-ui/icons';
 function AllTags() {
 const dispatch = useDispatch()
 const tagsSel = useSelector((state) => state.TagRaducer.tagsData);
- 
- let [user,setUser] =useState(localStorage.getItem('user-info')); 
-
- useEffect(() => {
-  if(localStorage.getItem('user-info')!=='undefined'){
-    
-     const StorageUser = JSON.parse(user);
-setUser(StorageUser)
-     
- console.warn('user 2',user.id)
-   }
- }, [localStorage.getItem('user-info')])
+const user = JSON.parse(localStorage.getItem('user-info'))
  
 
-
- 
+ console.warn('id',)
 
 
 
@@ -43,43 +31,29 @@ setUser(StorageUser)
      
  
 
-
   function deleteTag(id){
- if(user.id){
+    
  
-  dispatch(deleteSingleTag(id,user.id))
- 
-    dispatch(getAllTagAc());  
- }
-
-
- 
+  
+    
+     dispatch(deleteSingleTag(id,user.id))
+    
+       dispatch(getAllTagAc())
+   
+    
+    
 
 }
+  
 
   function statusChange(id){
-console.warn('userId',user.id)
-console.warn('user',user)
-    if(user.id!=='undefined'){
-      console.warn('userId',user.id)
+ 
+     
       console.warn("status",dispatch(statusChangeTagButon(id,user.id)));
 dispatch(getAllTagAc());
-     }
-
-    
-
-
- 
-
-    
+  
 
 }
-
-
-
-
-
-
 
     return (
         <>
@@ -107,7 +81,7 @@ dispatch(getAllTagAc());
                                 <i className="fas fa-table me-1"></i>
                 Tags
                             </div>
-                            <div className="card-body">
+                            <div className="card-body table-responsive">
                             <Table striped bordered hover size="sm">
   <thead>
     <tr>
@@ -138,8 +112,8 @@ tagsSel.map((item , key)=>
  
       }
       <td>
-      <Link to={"/updatetag/"+item.id}  className="btn btnpro btn-success">Edit</Link>
-     {item.status==0 ? <Button  onClick={(()=>{statusChange(item.id)})} className=" btnpro btn-primary">Active </Button>:<Button  onClick={(()=>{statusChange(item.id)})} className=" btnpro btn-danger">Deactive </Button> }
+      <Link to={"/updatetag/"+item.id}  className="btn mb-2 btnpro btn-success">Edit</Link>
+     {item.status==0 ? <Button  onClick={(()=>{statusChange(item.id)})} className=" btnpro mb-2 btn-primary">Active </Button>:<Button  onClick={(()=>{statusChange(item.id)})} className=" btnpro btn-danger mb-2">Deactive </Button> }
       <Button  onClick={(()=>{deleteTag(item.id)})} className=" btnpro btn-danger">Delete</Button>
       </td>
     </tr>

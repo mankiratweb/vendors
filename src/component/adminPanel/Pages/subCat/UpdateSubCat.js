@@ -2,12 +2,12 @@ import React,{useState , useEffect} from 'react';
 import Header from '../../common/Header';
 import Sidebar from '../../common/Sidebar';
 import {Form , Button} from 'react-bootstrap';
-import { useHistory, withRouter } from 'react-router-dom';
+import { Link, useHistory, withRouter } from 'react-router-dom';
 import { useSelector,useDispatch} from 'react-redux';
 import { getSingleSubCat, updateSubCatAc } from '../../../../Services/Actions/SubCatAction';
 
 function UpdateSubCat(props) {
-  let history = useHistory();
+let history = useHistory();
 let [name, setName] = useState("");
 const user = JSON.parse(localStorage.getItem('user-info'));
 let [catId, setCatId] = useState("");
@@ -145,7 +145,13 @@ console.warn('subCatData',subCatSelect.subCatData[0])
 
 <div id="layoutSidenav_content">
                     <main>
-                         <h1 className="mt-5" >Update Sub Category</h1>
+                        
+<ol className="breadcrumb m-4">
+                                <li className="breadcrumb-item"><Link to="/">Dashboard</Link></li>
+                                <li className="breadcrumb-item active"> <Link to="allsubcat"> Sub Categories </Link> </li>
+
+                                <li className="breadcrumb-item active"   >Update </li>
+                            </ol>
 
 
 
@@ -213,7 +219,7 @@ null)     }
     
     <div className="d-grid gap-2">
   <Button variant="primary" onClick={subCatUpdate} size="lg">
-    Add Sub Category
+    Update
   </Button>
   
 </div>

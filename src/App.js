@@ -1,4 +1,4 @@
-import Home from "./component/adminPanel/Home";
+import Home from "./component/adminPanel/Home"; 
  
 
 function App() {

@@ -3,8 +3,7 @@ import Header from '../../common/Header';
 import Sidebar from '../../common/Sidebar';
 import { Table, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
-
+import '../../theme_asset/js/scripts'
 function ListCategories() {
 
     const [data, setData] = useState([]);
@@ -17,7 +16,7 @@ function ListCategories() {
 
    async function statusChange(id) {
 
-        let result = await fetch("http://127.0.0.1:8000/api/catstatuschange/"+id+"/"+ user.id+"/"+user.role+"?_method=PUT",
+        let result = await fetch("http://127.0.0.1:8000/api/catstatuschange/"+id+"/"+user.id+"/"+user.role+"?_method=PUT",
             {
                 method: "POST",
 
@@ -94,7 +93,7 @@ function ListCategories() {
                                     <i className="fas fa-table me-1"></i>
                                     Categories
                                 </div>
-                                <div className="card-body">
+                                <div className="card-body table-responsive">
                                     <Table striped bordered hover size="sm">
                                         <thead>
                                             <tr>
@@ -120,7 +119,7 @@ function ListCategories() {
 
                                                         <td>
 
-                                                            {item.cat_file ? <img className="pro-list-img" src={"http://127.0.0.1:8000/" + item.cat_file} />
+                                                            {item.cat_file ? <img className="pro-list-img w-100" src={"http://127.0.0.1:8000/" + item.cat_file} />
                                                                 : null
                                                             }
                                                         </td>
@@ -128,9 +127,9 @@ function ListCategories() {
                                                         <td>{item.status==1?"Active":"Deactive" }</td>
 
                                                         <td>
-                                                            <Link to={"updatecat/" + item.id} className="btn btnpro btn-success">Edit</Link>
+                                                            <Link to={"updatecat/" + item.id} className="btn btnpro btn-success mb-2">Edit</Link>
 
-                                                            {item.status == 0 ? <Button onClick={(() => { statusChange(item.id) })} className=" btnpro btn-primary">Active</Button> : <Button onClick={(() => { statusChange(item.id) })} className=" btnpro btn-danger">Deactive</Button>}
+                                                            {item.status == 0 ? <Button onClick={(() => { statusChange(item.id) })} className=" btnpro btn-primary mb-2">Active</Button> : <Button onClick={(() => { statusChange(item.id) })} className=" btnpro btn-danger mb-2">Deactive</Button>}
 
 
                                                             <Button onClick={(() => { deleteCat(item.id) })} className=" btnpro btn-danger">Delete</Button>

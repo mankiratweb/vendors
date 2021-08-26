@@ -78,9 +78,8 @@ console.warn("Empty",subCatSelect.subCatData)
 <div id="layoutSidenav_content">
                     <main>
                     {error?<div className="alert alert-danger" role="alert"> {error} </div>:null}
-                    <div className="container-fluid px-4">
-                        <h1 className="mt-4">Sub Categories</h1>
-                        <ol className="breadcrumb mb-4">
+                    <div className="container-fluid px-4 mt-3">
+                          <ol className="breadcrumb mb-4">
                             <li className="breadcrumb-item"><Link to="/">Dashboard</Link></li>
                             <li className="breadcrumb-item active"> Sub Categories </li>
                          
@@ -93,12 +92,12 @@ console.warn("Empty",subCatSelect.subCatData)
                                 <i className="fas fa-table me-1"></i>
                  Sub Categories
                             </div>
-                            <div className="card-body">
+                            <div className="card-body table-responsive">
                             <Table striped bordered hover size="sm">
   <thead>
     <tr>
-      <th style={{width:100}}>Sno</th>
-      <th style={{width:150}}>Sub Categories</th>
+      <th className="text-justify text-capitalize"   >Sno</th>
+      <th style={{width:350}}>Name</th>
       <th style={{width:150}}>Categories</th>
      <th style={{width:150}}>Status</th>
       <th style={{width:350}}>Action</th>
@@ -125,9 +124,9 @@ console.warn("Empty",subCatSelect.subCatData)
       }</td>
       
       <td>
-      <Link to={"/updatesubcat/"+item.id}  className="btn btnpro btn-success">Edit</Link>
-    {item.status=='0'?  <Button  onClick={(()=>{dispatch(changeStatusAc(item.id,user.id,user.role))})} className=" btnpro btn-primary">Active</Button> :
-    <Button onClick={(()=>{dispatch(changeStatusAc(item.id,user.id,user.role))})} className=" btnpro btn-danger">Deactive</Button>
+      <Link to={"/updatesubcat/"+item.id}  className="btn btnpro btn-success mb-2">Edit</Link>
+    {item.status=='0'?  <Button  onClick={(()=>{dispatch(changeStatusAc(item.id,user.id,user.role))})} className=" btnpro btn-primary mb-2">Active</Button> :
+    <Button onClick={(()=>{dispatch(changeStatusAc(item.id,user.id,user.role))})} className=" btnpro btn-danger mb-2">Deactive</Button>
 
     }
       <Button  onClick={(()=>{dispatch(deleteSubcatAc(item.id,user.id,user.role))})} className=" btnpro btn-danger">Delete</Button>

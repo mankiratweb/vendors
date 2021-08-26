@@ -11,7 +11,8 @@ function Register(){
     const [email,setEmail]= useState("");
     const [password,setPass]= useState("");
     const [cpass,setCpass]= useState("");
-    let history= useHistory();
+    const history= useHistory();
+
 
 
 
@@ -27,7 +28,7 @@ useEffect(()=> {
        history.push('/'); 
     }
 
-}, );
+},[] );
 
 
 
@@ -44,10 +45,11 @@ useEffect(()=> {
 
 
 async function signUp(){
- 
-if(password===cpass){
+ let role = 1
+ console.warn("name",name);
+if(password==cpass && password && cpass && name && password){
 
-    let item = {name,email,password};
+    let item = {name,email,password,role};
     console.warn(item);
     
     let result = await fetch("http://127.0.0.1:8000/api/register",{
@@ -63,21 +65,11 @@ if(password===cpass){
  
     console.warn("result",result); 
     
-    history.push('/login');
-    
+    // history.push('/login');
+  
 
-
-
-
-
-
-
-
-
-
-
-
-
+}else{
+    console.warn("Error")
 }
 
 }
